@@ -25,7 +25,9 @@
 				<div id="element">
                     <ul>
                         <li><a href="presentation.php">Presentation</a></li>
-                        <li><a href="demonstration.php">Demonstration</a></li>
+                        <li><a href="signup.php">Sign-up</a></li>
+                        <li><a href="connexion.php">connexion</a></li>
+                        <li><a href="experiment.php">the experiment</a></li>
                     </ul>
 					</div>
                 </nav>
