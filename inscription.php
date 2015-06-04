@@ -3,7 +3,7 @@
             {		
            
                 
-                 $pseudo = $_POST['pseudo'];
+                $pseudo = $_POST['pseudo'];
 		$password = $_POST['password'];
                 $passwordtwo = $_POST['passwordtwo'];
 		$email = $_POST['email'];
@@ -12,6 +12,7 @@
                 $mac = null;
                 $position_pass = 1;
                 $session_number = 1;
+                $access = 0;
                 $pass_valid = 0;
                 
 
@@ -25,12 +26,12 @@ $db = 'keystrokedb';
             $link = mysqli_connect($user,$log,$pass,$db);
             
 if($password == $passwordtwo){
-    mysqli_query($link,"INSERT INTO `keystrokedb`.`password_table`(`idpass`, `password`, `pass_valid`, `date`, `time`, `session_number`) VALUES (NULL,'$password','$session_number',CURDATE(),CURTIME(),'$pass_valid')");
-    $table = mysqli_query($link,"SELECT MAX(idpass) FROM `password_table`");
+    mysqli_query($link,"INSERT INTO `keystrokedb`.`password_table`(`idpass`, `password`, `pass_valid`, `date`, `time`, `access`) VALUES (NULL,'$password','$pass_valid',CURDATE(),CURTIME(),'$access')");
+    $table = mysqli_query($link,"SELECT MAX(idpass) FROM `keystrokedb`.`password_table`");
     while ($row = $table->fetch_row()) {
         $id_pass_table = $row[0];
     }
-    $reponse = mysqli_query($link,"INSERT INTO `keystrokedb`.`user` (`iduser`, `pseudo`, `email`, `password`, `mac`, `gender`, `age`, `position_pass`, `session_number`, `password_table_idpass`) VALUES (NULL, '$pseudo', '$email', '$password', NULL, '$gender', '$age', $position_pass, '$session_number', '$id_pass_table')");
+    $reponse = mysqli_query($link,"INSERT INTO `keystrokedb`.`user` (`iduser`, `pseudo`, `email`, `password`, `mac`, `gender`, `age`, `position_pass`, `session_number`, `password_table_idpass`,`languages_idlang`) VALUES (NULL, '$pseudo', '$email', '$password', NULL, '$gender', '$age', $position_pass, '$session_number', '$id_pass_table' ,NULL)");
     }
 else{
   ?>
