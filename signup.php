@@ -13,7 +13,7 @@
             <?php include 'header.php'; ?>  
 
 <div id="data"></br>
-<div id="user">Sign up
+    <div id="user"><b>Please fill in these information :</b>
 <form method="POST" ACTION="inscription.php"> 
     <p>
     <label for="pseudo">Pseudo: </label>
@@ -29,6 +29,41 @@
     <input type="radio" name="gender" value="F" id="gender"> Female</br></br>
     <label for="age">Age : </label>
     <INPUT type=text name="age" id="age"></br></br>
+    <label for="1st language">Mother tongue : </label>
+    <SELECT name="1lang" size="1" id="1lang">
+    <OPTION value="English">English</OPTION>
+    <OPTION value="Spanish">Spanish</OPTION>
+    <OPTION value="Arabic">Arabic</OPTION>
+    <OPTION value="Bengali">Bengali</OPTION>
+    <OPTION value="Hindi">Hindi</OPTION>
+    <OPTION value="Russian">Russian</OPTION>
+    <OPTION value="Portuguese">Portuguese</OPTION>
+    <OPTION value="Japanese">Japanese</OPTION>
+    <OPTION value="German">German</OPTION>
+    <OPTION value="Korean">Korean</OPTION>
+    <OPTION value="French">French</OPTION>
+    <OPTION value="Norwegian">Norwegian</OPTION>
+    <OPTION value="Turkish">Turkish</OPTION>
+    <OPTION value="Italian">Italian</OPTION>
+    </SELECT></br></br>
+    
+    <label for="2nd language">2nd language : </label>
+    <SELECT name="2lang" size="1" id="2lang">
+    <OPTION value="English">English</OPTION>
+    <OPTION value="Spanish">Spanish</OPTION>
+    <OPTION value="Arabic">Arabic</OPTION>
+    <OPTION value="Bengali">Bengali</OPTION>
+    <OPTION value="Hindi">Hindi</OPTION>
+    <OPTION value="Russian">Russian</OPTION>
+    <OPTION value="Portuguese">Portuguese</OPTION>
+    <OPTION value="Japanese">Japanese</OPTION>
+    <OPTION value="German">German</OPTION>
+    <OPTION value="Korean">Korean</OPTION>
+    <OPTION value="French">French</OPTION>
+    <OPTION value="Norwegian">Norwegian</OPTION>
+    <OPTION value="Turkish">Turkish</OPTION>
+    <OPTION value="Italian">Italian</OPTION>
+    </SELECT></br></br>
     
     <INPUT type="submit" value="enregistrer" onclick="inscription()"> 
     <INPUT type="reset" value="effacer" class="button"> 

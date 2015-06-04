@@ -1,5 +1,5 @@
 <?php
-	if (!empty($_POST['pseudo']) && !empty($_POST['password'])  && !empty($_POST['passwordtwo'])  && !empty($_POST['email']) && !empty($_POST['gender']) && !empty($_POST['age']))
+	if (!empty($_POST['pseudo']) && !empty($_POST['password'])  && !empty($_POST['passwordtwo'])  && !empty($_POST['email']) && !empty($_POST['gender']) && !empty($_POST['age']) && !empty($_POST['1lang']) && !empty($_POST['2lang']))
             {		
            
                 
@@ -14,8 +14,8 @@
                 $session_number = 1;
                 $access = 0;
                 $pass_valid = 0;
-                
-
+                $firstlang = $_POST['1lang'];
+                $seclang = $_POST['2lang'];
                 
                 
 $user = 'localhost';
@@ -27,11 +27,16 @@ $db = 'keystrokedb';
             
 if($password == $passwordtwo){
     mysqli_query($link,"INSERT INTO `keystrokedb`.`password_table`(`idpass`, `password`, `pass_valid`, `date`, `time`, `access`) VALUES (NULL,'$password','$pass_valid',CURDATE(),CURTIME(),'$access')");
+    mysqli_query($link,"INSERT INTO `languages`(`idlang`, `firstlang`, `seclang`) VALUES (NULL,'$firstlang','$seclang')");
     $table = mysqli_query($link,"SELECT MAX(idpass) FROM `keystrokedb`.`password_table`");
+    $lang = mysqli_query($link,"SELECT MAX(idlang) FROM `keystrokedb`.`languages`");
     while ($row = $table->fetch_row()) {
         $id_pass_table = $row[0];
     }
-    $reponse = mysqli_query($link,"INSERT INTO `keystrokedb`.`user` (`iduser`, `pseudo`, `email`, `password`, `mac`, `gender`, `age`, `position_pass`, `session_number`, `password_table_idpass`,`languages_idlang`) VALUES (NULL, '$pseudo', '$email', '$password', NULL, '$gender', '$age', $position_pass, '$session_number', '$id_pass_table' ,NULL)");
+    while ($row = $lang->fetch_row()) {
+        $id_lang = $row[0];
+    }
+    $reponse = mysqli_query($link,"INSERT INTO `keystrokedb`.`user` (`iduser`, `pseudo`, `email`, `password`, `mac`, `gender`, `age`, `position_pass`, `session_number`, `password_table_idpass`,`languages_idlang`) VALUES (NULL, '$pseudo', '$email', '$password', NULL, '$gender', '$age', $position_pass, '$session_number', '$id_pass_table' ,'$id_lang')");
     }
 else{
   ?>
