@@ -19,10 +19,17 @@ $table = mysqli_query($link,"SELECT password FRROM `keystrokedb`.`user` WHERE ps
 while ($row = $table->fetch_row()) {
         $password = $id_pass_table = $row[0];
 }
-if($password == $passwordtyped)  ?>
-<script>alert("the two password aren't the same");
-    </script>
-    <a href="signup.php"> Sign-up</a>
+if($password == $passwordtyped){
+    ?>
+<script> document.location.href = "experiment.php";</script>
+
+<?php
+}
+
+else{
+
+ ?><script>alert("the password is not correct");</script>
+ <a href="signup.php"> Sign-up</a>
     
 
 <?php
