@@ -12,7 +12,7 @@
 
             <?php include 'header.php'; ?>  
 
-        <div id="data"></br>
+<div id="data"></br>
 <div id="user">Sign up
 <form method="POST" ACTION="inscription.php"> 
     <p>
@@ -29,13 +29,12 @@
     <input type="radio" name="gender" value="F" id="gender"> Female</br></br>
     <label for="age">Age : </label>
     <INPUT type=text name="age" id="age"></br></br>
-
+    
     <INPUT type="submit" value="enregistrer" onclick="inscription()"> 
     <INPUT type="reset" value="effacer" class="button"> 
-  </p>
+    </p>
 </form>
-    </div></br>
-    <li><a href="addPassword.php">Add a password to my list</a></li></br>
+</div></br>
                         </body>
             
                         <div id="message"></div>
