@@ -128,13 +128,6 @@ article, aside
     text-align: justify;
 }
 
-#data
-{
-  text-align: center;
-  Font-size: 28px;
-}
-
-
 
 article
 {
@@ -147,7 +140,12 @@ article
     vertical-align: middle;
     margin-right: 8px;
 }
-
+label
+{
+    display: block;
+    width: 150px;
+    float: left;
+}
 
 aside
 {
@@ -178,10 +176,10 @@ aside img
 
 /* Footer */
 
+
+
 footer
 {
     background:  url('images/ico_top.png') no-repeat top center, url('images/separateur.png') repeat-x top, url('images/ombre.png') repeat-x top;
     padding-top: 25px;
 }
-
-

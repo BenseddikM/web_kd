@@ -60,7 +60,7 @@ function inscription()
                 
 		{
                      
-			document.getElementById("message").innerHTML = "<p>Ce client existe déjà</p>";
+			document.getElementById("message").innerHTML = "<p></p>";
                         
 		}
 	}

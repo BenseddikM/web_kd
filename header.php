@@ -18,7 +18,10 @@
 				<div id="element">
                     <ul>
                         <li><a href="presentation.php">Presentation</a></li>
-                        <li><a href="demonstration.php">Demonstration</a></li>
+                        <li><a href="signup.php">Sign up</a></li>
+                        <li><a href="signin.php">Sign in</a></li>
+                        <li><a href="experiment.php">Experiment</a></li>
+                        <li><a href="addPassword.php">Passwords</a></li>
                     </ul>
 					</div>
                 </nav>
