@@ -115,10 +115,6 @@ nav a:hover
     margin-bottom: 25px;
 }
 
-
-
-
-
 /* Corps */
 
 article, aside
@@ -139,12 +135,6 @@ article
 {
     vertical-align: middle;
     margin-right: 8px;
-}
-label
-{
-    display: block;
-    width: 150px;
-    float: left;
 }
 
 aside

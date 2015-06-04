@@ -11,13 +11,17 @@
 
             <?php include 'header.php'; ?>  
 <body>
+<div id="connexion">
 <form method="POST" ACTION="connexion.php"> 
     <p>
     <label for="pseudo">Pseudo: </label>
     <INPUT type=text name="pseudo" id="pseudo"></br></br>
     <label for="password">Password: </label>
     <INPUT type=password name="password" id="password"></br></br>
+    <INPUT type="submit" value="sign-in" > 
+    <INPUT type="reset" value="effacer" class="button"> 
 </p>
+</div>
 </form>
 </body>
 </html>

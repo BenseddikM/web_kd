@@ -10,26 +10,29 @@ $user = 'localhost';
 $log ='root';
 $pass='';
 $db = 'keystrokedb';
+
+
  
-            $link = mysqli_connect($user,$log,$pass,$db);
+$link = mysqli_connect($user,$log,$pass,$db);
             
 
-$table = mysqli_query($link,"SELECT password FRROM `keystrokedb`.`user` WHERE pseudo = '$pseudo';");
+$table = mysqli_query($link,"SELECT password FROM `keystrokedb`.`user` WHERE pseudo = '$pseudo';");
 
 while ($row = $table->fetch_row()) {
         $password = $id_pass_table = $row[0];
 }
 if($password == $passwordtyped){
     ?>
-<script> document.location.href = "experiment.php";</script>
+<script> document.location.href = "file.php";</script>
 
 <?php
 }
 
 else{
 
- ?><script>alert("the password is not correct");</script>
- <a href="signup.php"> Sign-up</a>
+ ?><script>alert("the password is not correct");
+  document.location.href = "signin.php";</script>
+ 
     
 
 <?php
