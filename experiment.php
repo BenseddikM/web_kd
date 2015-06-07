@@ -1,7 +1,20 @@
+<?php 
+    session_start();
+
+    $user = 'localhost';
+    $log ='root';
+    $pass='';
+    $db = 'keystrokedb';
+    $link = mysqli_connect($user,$log,$pass,$db);
+    
+    $_SESSION['truc'] = 'lolololo';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
+        <script langage="text/javascript" src="keystroke_script.js"></script>
         <link rel="stylesheet" href="style.css" />
         <title>Keystroke dynamics</title>
     </head>
@@ -31,6 +44,19 @@
 					</div>
                 </nav>
             </header>
+            
+            <FORM method="POST" ACTION="analysepass.php"> 
+            <p>Please enter the following  password : 
+                <?php
+                    
+                    
+                    $iduser = $_SESSION['iduser'];
+                    
+                    echo $iduser;
+                ?>
+            <INPUT type=text name="expass" id="expass">
+            <INPUT type="submit" value="Submit"> </p>
+            </form>                     
         </div>
     </body>
 </html>

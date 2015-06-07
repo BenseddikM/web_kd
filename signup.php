@@ -49,6 +49,7 @@
     
     <label for="2nd language">2nd language : </label>
     <SELECT name="2lang" size="1" id="2lang">
+    <OPTION value = ""></OPTION>
     <OPTION value="English">English</OPTION>
     <OPTION value="Spanish">Spanish</OPTION>
     <OPTION value="Arabic">Arabic</OPTION>

@@ -1,3 +1,8 @@
+<?php session_start();
+       $_SESSION['pseudo'] = '';
+       $_SESSION['iduser'] = '';
+?>
+
 <html>
     <head>
         <meta charset="utf-8" />
