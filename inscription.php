@@ -22,8 +22,8 @@ $user = 'localhost';
 $log ='root';
 $pass='';
 $db = 'keystrokedb';
- 
-            $link = mysqli_connect($user,$log,$pass,$db);
+
+$link = mysqli_connect($user,$log,$pass,$db);
             
 if($password == $passwordtwo && $firstlang != $seclang){
     mysqli_query($link,"INSERT INTO `keystrokedb`.`password_table`(`idpass`, `password`, `pass_valid`, `date`, `time`, `access`) VALUES (NULL,'$password','$pass_valid',CURDATE(),CURTIME(),'$access')");
