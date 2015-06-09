@@ -22,8 +22,8 @@ $user = 'localhost';
 $log ='root';
 $pass='';
 $db = 'keystrokedb';
-
-$link = mysqli_connect($user,$log,$pass,$db);
+ 
+            $link = mysqli_connect($user,$log,$pass,$db);
             
 if($password == $passwordtwo && $firstlang != $seclang){
     mysqli_query($link,"INSERT INTO `keystrokedb`.`password_table`(`idpass`, `password`, `pass_valid`, `date`, `time`, `access`) VALUES (NULL,'$password','$pass_valid',CURDATE(),CURTIME(),'$access')");
@@ -37,11 +37,15 @@ if($password == $passwordtwo && $firstlang != $seclang){
         $id_lang = $row[0];
     }
     $reponse = mysqli_query($link,"INSERT INTO `keystrokedb`.`user` (`iduser`, `pseudo`, `email`, `password`, `mac`, `gender`, `age`, `position_pass`, `session_number`, `password_table_idpass`,`languages_idlang`) VALUES (NULL, '$pseudo', '$email', '$password', NULL, '$gender', '$age', $position_pass, '$session_number', '$id_pass_table' ,'$id_lang')");
+    ?><script> alert("You have succesfuly been registred in the databse !");
+document.location.href = "presentation.php";</script>
+<?php
     }
 else{
     if($password != $passwordtwo){
         ?>
-            <script>alert("The two password are different!");</script>
+            <script>alert("The two password are different!");
+            document.location.href = "signup.php";</script>
         <?php
     }
     if($firstlang == $seclang){
@@ -50,13 +54,7 @@ else{
         <?php
     }
         
-}
-
-?><script> alert("You have succesfuly been registred in the databse !");
-document.location.href = "presentation.php";</script>
-		
-<?php
-                 
+}                 
         }
 else {
      ?>

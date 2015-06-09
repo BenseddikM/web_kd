@@ -1,6 +1,5 @@
 <?php
     session_start();
-
 if (!empty($_POST['expass']))
 {
     $user = 'localhost';
@@ -18,5 +17,4 @@ if (!empty($_POST['expass']))
         
     }
 }
-
 ?>

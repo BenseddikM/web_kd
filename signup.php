@@ -71,6 +71,7 @@
     </p>
 </form>
 </div></br>
+</div>
                         </body>
             
                         <div id="message"></div>
@@ -80,16 +81,3 @@
         </div>
     </body>
 </html>
-
-'
-
-
-
-
-
-
-
-
- 
-	
-			
