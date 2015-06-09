@@ -27,7 +27,7 @@
                 <nav>
 				<div id="element">
                     <ul>
-                        <li><a href="presentation.php">Presentation</a></li>
+                        <li><a href="presentationbis.php">Presentation</a></li>
                         <li><a href="experiment.php">Experiment</a></li>
                         <li><a href="addPassword.php">Passwords</a></li>
                         <li><a href="signout.php">Sign-out</a></li>
