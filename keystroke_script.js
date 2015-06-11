@@ -1,6 +1,6 @@
 var start = 0;
 var cnt = 0;
-
+var id = 1;
 function getRequestHttp()
 {
 	var requeteHttp;
@@ -34,7 +34,7 @@ function getRequestHttp()
 	return requeteHttp;
 }
 
-function keystroke_gstion()
+function keystroke_gestion()
 {
     var req = getRequestHttp();
     
@@ -50,12 +50,94 @@ function processkeydown(e)
     return tdown;
 }
 
-function processkeyup(e)
+function processkey(e)
 {
+    var req = getRequestHttp();
+    var x = e.type;
+    if(x === "keyup")
+    {
     var tup = (new Date()).getTime()- start;
     var cup = e.charCode;
     var keyCode=e.keyCode;
-    var char =  String.fromCharCode(keyCode || cup) 
-
-    document.getElementById("affup").innerHTML = "Time up : " + tup + " Char up : " + char;
+    var charup =  String.fromCharCode(keyCode || cup);       
+    id++;
+    var url1 = "tup="+tup+"&char"+charup+"&id"+id;
+    
+    req.open('POST', 'test1.php', true);
+    req.onreadystatechange = function(){callbackup(req);}
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    req.send(url1);    
 }
+
+    else{
+
+    var tdown = (new Date()).getTime()- start;
+    var cdown = e.charCode;
+    var keyCode=e.keyCode;
+    var chardown =  String.fromCharCode(keyCode || cdown);       
+    var url1 = "tdown="+tdown+"&char"+chardown;
+    
+    req.open('POST', 'test2.php', true);
+    req.onreadystatechange = function(){callbackdown(req);}
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    req.send(url2);
+    
+    }
+}
+
+    function callbackup(req){
+
+
+    
+    if (req.readyState === 4 && req.status === 200)
+	{
+              
+		if (req.responseText === "-1")
+		{
+                    alert("alert 1 up");
+			
+		}
+		else
+                
+		{
+                     
+			alert("alert 2 up");
+                        
+		}
+	}
+	else
+	{
+		alert("Erreur dans la requête");
+	}
+        }
+
+
+
+
+
+    function callbackdown(req){
+
+
+    
+    if (req.readyState === 4 && req.status === 200)
+	{
+              
+		if (req.responseText === "-1")
+		{
+                    alert("alert 1 down");
+			
+		}
+		else
+                
+		{
+                     
+			alert("alert 2 down");
+                        
+		}
+	}
+	else
+	{
+		alert("Erreur dans la requête");
+	}
+        }
+
