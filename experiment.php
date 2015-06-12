@@ -37,6 +37,12 @@
             . "VALUES (NULL,'$pos','$expass',NULL,"
             . "CURDATE(),CURTIME(),1,'$iduser')");
 }
+    $idpasstable_table = mysqli_query($link, "SELECT idpasstable from exp_password_table where user_iduser = '$iduser' AND pos_pass = '$pos'");
+    
+    while ($row = $idpasstable_table->fetch_row()) {
+        $idpasstable =  $row[0];
+    }
+    $_SESSION['idpasstable'] = $idpasstable;
 ?>
 
 <!DOCTYPE html>

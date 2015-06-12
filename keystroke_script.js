@@ -41,15 +41,6 @@ function keystroke_gestion()
     document.getElementById("affdown").innerHTML = processkeydown(e);
 }
 
-function processkeydown(e)
-{
-    var tdown = (new Date()).getTime()- start;
-    var cdown = e.charCode;
-    
-    //document.getElementById("affdown").innerHTML = "Time down : " + tdown + " Char down : " + cdown;
-    return tdown;
-}
-
 function processkey(e)
 {
     var req = getRequestHttp();
@@ -64,9 +55,11 @@ function processkey(e)
     var url1 = "tup="+tup+"&char"+charup+"&id"+id;
     
     req.open('POST', 'test1.php', true);
-    req.onreadystatechange = function(){callbackup(req);}
-    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    req.send(url1);    
+    req.onreadystatechange = function(){callbackup(req);};
+    req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+    req.send(url1);  
+    
+    
 }
 
     else{
@@ -74,70 +67,34 @@ function processkey(e)
     var tdown = (new Date()).getTime()- start;
     var cdown = e.charCode;
     var keyCode=e.keyCode;
-    var chardown =  String.fromCharCode(keyCode || cdown);       
-    var url1 = "tdown="+tdown+"&char"+chardown;
+    var char =  String.fromCharCode(keyCode || cdown);       
+    var url2 = 'tdown='+tdown+'&char='+char+'&id='+id;
+    id++;
     
-    req.open('POST', 'test2.php', true);
-    req.onreadystatechange = function(){callbackdown(req);}
-    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    req.open('POST', "test2.php", true);
+    req.onreadystatechange = function(){callbackdown(req);};
+    req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
     req.send(url2);
+    
     
     }
 }
 
-    function callbackup(req){
-
-
     
-    if (req.readyState === 4 && req.status === 200)
-	{
-              
-		if (req.responseText === "-1")
-		{
-                    alert("alert 1 up");
-			
-		}
-		else
-                
-		{
-                     
-			alert("alert 2 up");
-                        
-		}
-	}
-	else
-	{
-		alert("Erreur dans la requête");
-	}
-        }
 
 
 
 
+    function callbackdown(requetteHttp){
+        
+        if(requetteHttp.readyState===4 && requetteHttp.status===200){
+	
+            alert("0");
+	
+	    }
 
-    function callbackdown(req){
 
+    return true;
+}
 
-    
-    if (req.readyState === 4 && req.status === 200)
-	{
-              
-		if (req.responseText === "-1")
-		{
-                    alert("alert 1 down");
-			
-		}
-		else
-                
-		{
-                     
-			alert("alert 2 down");
-                        
-		}
-	}
-	else
-	{
-		alert("Erreur dans la requête");
-	}
-        }
 
