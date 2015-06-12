@@ -52,9 +52,9 @@ function processkey(e)
     var keyCode=e.keyCode;
     var charup =  String.fromCharCode(keyCode || cup);       
     id++;
-    var url1 = "tup="+tup+"&char"+charup+"&id"+id;
+    var url1 = "tup="+tup+"&char="+charup+"&id="+id;
     
-    req.open('POST', 'test1.php', true);
+    req.open('POST', "test1.php", true);
     req.onreadystatechange = function(){callbackup(req);};
     req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
     req.send(url1);  
@@ -80,16 +80,11 @@ function processkey(e)
     }
 }
 
-    
-
-
-
-
     function callbackdown(requetteHttp){
         
         if(requetteHttp.readyState===4 && requetteHttp.status===200){
 	
-            alert("0");
+            alert("down");
 	
 	    }
 
@@ -98,3 +93,14 @@ function processkey(e)
 }
 
 
+    function callbackup(requetteHttp){
+        
+        if(requetteHttp.readyState===4 && requetteHttp.status===200){
+	
+            alert("up");
+	
+	    }
+
+
+    return true;
+}

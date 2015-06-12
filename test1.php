@@ -1,35 +1,36 @@
 <?php
+session_start();
 
-if (!empty($_POST['tup']) && !empty($_POST['char']))
+if (!empty($_POST['tup']) && !empty($_POST['char']) && !empty($_POST['id']))
             {		
            
-                $keyuptable = array();
+                $keydowntable = array();
                 $tup = $_POST['tup'];
 		$char = $_POST['char'];
-                $keyuptable[i] = $char;
-                
+                //$keydowntable[id] = $char;
+                $idpasstable = $_SESSION['idpasstable'];
 $user = 'localhost';
 $log ='root';
 $pass='';
 $db = 'keystrokedb';
- 
-            $link = mysqli_connect($user,$log,$pass,$db);
-            
-    mysqli_query($link,"INSERT INTO `keystrokedb`.`key_expass`(`idkey`, `keyname`, `keydown`, `keyup`, `press_duration`, `exp_password_table_idpasstable`) VALUES (NULL,'$char',NULL,'$tup',NULL,1)");
-    $table = mysqli_query($link,"SELECT keyname FROM `keystrokedb`.`key_expass`");
+
+
+    $link = mysqli_connect($user,$log,$pass,$db);
+$idkey_table = mysqli_query($link, "SELECT MAX(idkey) FROM `keystrokedb`.`key_expass` where keyname = UPPER('$char')");
+    
+    while ($row = $idkey_table_table->fetch_row()) {
+        $idkey =  $row[0];
+    }
   
-    while ($row = $table->fetch_row()) {
-        $id_pass_table = $row[0];
-        echo $id_pass_table;
-        }
-        
-    ?><script> alert("it has been added in the database!");</script>
-<?php
-}                 
+    
+    mysqli_query($link,"UPDATE `keystrokedb`.`key_expass` SET keyup = '$tup' WHERE keyname = UPPER('$char') AND idkey = '$idkey'");    
+            }                 
 else {
-     ?>
+     ?>    
+            }                 
+            
 <script> alert("empty field!!");
-document.location.href = "signup.php";</script>
+
  <?php
  
 }
