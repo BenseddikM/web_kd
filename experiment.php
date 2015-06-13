@@ -81,9 +81,10 @@
                 </nav>
             </header>
             
-            <FORM method="POST" ACTION="file.php"> 
+            <FORM method="POST" ACTION="submit_gestion.php"> 
             <p>Please enter the following  password :
                 <table width="20%" border ="1" cellspacing="1" cellpadding="1"><tr><td><div align=center>
+                                <div id="nbrrep"></div>
                 <?php                   
                     echo $expass;
                 ?>

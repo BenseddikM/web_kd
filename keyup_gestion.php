@@ -18,13 +18,15 @@ $db = 'keystrokedb';
     $link = mysqli_connect($user,$log,$pass,$db);
 $idkey_table = mysqli_query($link, "SELECT MAX(idkey) FROM `keystrokedb`.`key_expass` where keyname = UPPER('$char')");
     
-    while ($row = $idkey_table_table->fetch_row()) {
+    while ($row = $idkey_table->fetch_row()) {
         $idkey =  $row[0];
     }
   
     
     mysqli_query($link,"UPDATE `keystrokedb`.`key_expass` SET keyup = '$tup' WHERE keyname = UPPER('$char') AND idkey = '$idkey'");    
-            }                 
+            
+    mysqli_query($link,"UPDATE `keystrokedb`.`key_expass` SET `press_duration` =  keyup-keydown");
+    }                 
 else {
      ?>    
             }                 

@@ -6,34 +6,46 @@ if (!empty($_POST['expass']))
     $log ='root';
     $pass='';
     $db = 'keystrokedb';
- 
     $link = mysqli_connect($user,$log,$pass,$db);  
     
     $expass = $_POST['expass'];
     $expass_bd = $_SESSION['expass'];
     $num = 1;
     $i = 1;
-    $nbrpass = mysqli_query($link, "SELECT MAX(`num`) FROM `exp_pass`");
+    
+    $nbrpass_table = mysqli_query($link, "SELECT MAX(`num`) FROM `exp_pass`");
+    while ($row = $nbrpass_table->fetch_row()) {
+        $nbrpass =  $row[0];
+    }
     while($num < $nbrpass){
-    $numrep = mysqli_query($link, "SELECT `num_rep` FROM `exp_pass` WHERE num = '$num'");
-      
+    $numrep_table = mysqli_query($link, "SELECT `num_rep` FROM `exp_pass` WHERE num = '$num'"); 
+    
+    while ($row = $numrep_table->fetch_row()) {
+        $numrep =  $row[0];
+    }
     while($i < $numrep){
     if($expass == $expass_bd)
     {
+        
         $i++;
         ?><script>document.location.href ="submit_gestion.php";</script><?php
         
     }else{
         ?><script>document.location.href ="submit_gestion.php";</script><?php
     }
-    
+    echo "hhhhhhhhhhhhh";
+echo $i;
+
 }
 $num++;
-    
-}
+    ?><script> alert("zebbi");</script>
+    <?php
 }
 echo "hhhhhhhhhhhhh";
-//echo $expass_bd;
+echo $i;
+
+    }
+
 ?>
 
         
@@ -79,8 +91,8 @@ echo "hhhhhhhhhhhhh";
                 <table width="20%" border ="1" cellspacing="1" cellpadding="1"><tr><td><div align=center>
                                 
                 <?php                   
-                    echo $expass; 
-                    echo $i;
+                    echo $expass_bd; 
+                    
                 ?>
             </div></td><tr></table></br>
             <INPUT type=text name="expass" id="expass" onkeydown="processkey(event)" onkeyup="processkey(event)">

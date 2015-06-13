@@ -50,11 +50,13 @@ function processkey(e)
     var tup = (new Date()).getTime()- start;
     var cup = e.charCode;
     var keyCode=e.keyCode;
-    var charup =  String.fromCharCode(keyCode || cup);       
+    var char =  String.fromCharCode(keyCode || cup)+((e.shiftKey || keyCode == 16) ? ' SHIFT' : '') +((e.ctrlKey || keyCode == 17) ? ' CTRL' : '') +
+                                        ((e.altKey || keyCode == 18) ? ' ALT' : '') + (keyCode == 8 ? 'BACKSPACE' : '') + (keyCode == 32 ? 'SPACE' : '')
+                                        + (keyCode == 20 ? 'CAPS LOCK' : '') + (keyCode == 9 ? 'ENTER' : '');     
     id++;
-    var url1 = "tup="+tup+"&char="+charup+"&id="+id;
+    var url1 = "tup="+tup+"&char="+char+"&id="+id;
     
-    req.open('POST', "test1.php", true);
+    req.open('POST', "keyup_gestion.php", true);
     req.onreadystatechange = function(){callbackup(req);};
     req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
     req.send(url1);  
@@ -67,11 +69,13 @@ function processkey(e)
     var tdown = (new Date()).getTime()- start;
     var cdown = e.charCode;
     var keyCode=e.keyCode;
-    var char =  String.fromCharCode(keyCode || cdown);       
+    var char =  String.fromCharCode(keyCode || cdown)+((e.shiftKey || keyCode == 16) ? ' SHIFT' : '') +((e.ctrlKey || keyCode == 17) ? ' CTRL' : '') +
+                                        ((e.altKey || keyCode == 18) ? ' ALT' : '') + (keyCode == 8 ? 'BACKSPACE' : '') + (keyCode == 32 ? 'SPACE' : '')
+                                        + (keyCode == 20 ? 'CAPS LOCK' : '') + (keyCode == 9 ? 'ENTER' : '');       
     var url2 = 'tdown='+tdown+'&char='+char+'&id='+id;
     id++;
     
-    req.open('POST', "test2.php", true);
+    req.open('POST', "keydown_gestion.php", true);
     req.onreadystatechange = function(){callbackdown(req);};
     req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
     req.send(url2);
@@ -84,7 +88,7 @@ function processkey(e)
         
         if(requetteHttp.readyState===4 && requetteHttp.status===200){
 	
-            alert("down");
+            //jjj
 	
 	    }
 
@@ -97,7 +101,7 @@ function processkey(e)
         
         if(requetteHttp.readyState===4 && requetteHttp.status===200){
 	
-            alert("up");
+            //
 	
 	    }
 

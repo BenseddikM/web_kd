@@ -30,7 +30,7 @@ if($password == $passwordtyped){
         $_SESSION['iduser'] = $iduser;
     }
   ?>
-<script> document.location.href = "file.php";</script>
+<script> document.location.href = "experiment.php";</script>
 
 <?php
 }
