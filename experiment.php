@@ -14,14 +14,19 @@
     while ($row = $pos_table->fetch_row()) {
         $pos =  $row[0];
     }
-    
+    $_SESSION['pos'] = $pos;
     $expass_table = mysqli_query($link, "SELECT `expass` FROM `exp_pass` WHERE num = '$pos';");
     
     while ($row = $expass_table->fetch_row()) {
         $expass =  $row[0];
     }
+    $nbrep_table = mysqli_query($link, "SELECT `num_rep` FROM `exp_pass` WHERE num = '$pos'"); 
     
+    while ($row = $nbrep_table->fetch_row()) {
+        $nbrep =  $row[0];
+    }
     $_SESSION['expass'] = $expass;
+    $_SESSION['nbrep'] = $nbrep;
     
     $position_table = mysqli_query($link, "SELECT COALESCE(MAX(pos_pass),0) from exp_password_table where user_iduser = '$iduser'");
     
@@ -29,21 +34,25 @@
         $position =  $row[0];
     }
     
-    
+    $_SESSION['position'] = $position;
     $expass_table = mysqli_query($link, "SELECT `expass` FROM `exp_pass` WHERE num = '$pos';");
-    if($pos != $position){
-    mysqli_query($link, "INSERT INTO `exp_password_table`(`idpasstable`, `pos_pass`, `expass`, "
-            . "`exp_password_tablecol`, `date`, `time`, `session_number`, `user_iduser`) "
-            . "VALUES (NULL,'$pos','$expass',NULL,"
-            . "CURDATE(),CURTIME(),1,'$iduser')");
-}
-    $idpasstable_table = mysqli_query($link, "SELECT idpasstable from exp_password_table where user_iduser = '$iduser' AND pos_pass = '$pos'");
+    $nbrepuser_table = mysqli_query($link, "SELECT `nbrep` FROM `user` WHERE pseudo = '$pseudo';");
     
-    while ($row = $idpasstable_table->fetch_row()) {
-        $idpasstable =  $row[0];
+    while ($row = $nbrepuser_table->fetch_row()) {
+        $nbrepuser =  $row[0];
     }
-    $_SESSION['idpasstable'] = $idpasstable;
-?>
+   $verif = 1;
+    if($pos != $position || $nbrep!=$nbrepuser){
+    mysqli_query($link, "INSERT INTO `exp_password_table`(`idpasstable`, `pos_pass`,`nbrep`,`expass`, "
+            . "`exp_password_tablecol`, `date`, `time`, `session_number`, `user_iduser`) "
+            . "VALUES (NULL,'$pos',$nbrepuser,'$expass',NULL,"
+            . "CURDATE(),CURTIME(),1,'$iduser')");
+
+    }
+    
+   $_SESSION['nbrepuser'] = $nbrepuser;   
+   $_SESSION['verif'] = $verif;
+    ?>
 
 <!DOCTYPE html>
 <html>
@@ -81,15 +90,17 @@
                 </nav>
             </header>
             
-            <FORM method="POST" ACTION="submit_gestion.php"> 
+            <FORM method="POST" ACTION="experiment_gestion.php"> 
             <p>Please enter the following  password :
                 <table width="20%" border ="1" cellspacing="1" cellpadding="1"><tr><td><div align=center>
                                 <div id="nbrrep"></div>
                 <?php                   
                     echo $expass;
+                    echo $nbrepuser."/".$nbrep;
+                    $nbrepuser++;
                 ?>
             </div></td><tr></table></br>
-            <INPUT type=text name="expass" id="expass" onkeydown="processkey(event)" onkeyup="processkey(event)">
+            <INPUT type=text name="password" id="expass" onkeydown="processkey(event)" onkeyup="processkey(event)">
             <INPUT type="submit" value="Submit"> </p>
             </form>                     
             
